@@ -105,3 +105,6 @@ venv.bak/
 
 # PyCharm
 .idea/
+
+# Triage
+triaged_datasets/
