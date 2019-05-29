@@ -48,7 +48,7 @@ PRESENT_TIME = arrow.now()
 # But you can get it if you want but better not to for completeness :)
 
 # You can set this directly from command line using the -d or --days-since-yday argument
-DURATION_DAYS = 3 or DAYS_SINCE_YDAY # Gets 3 days of previous data including YESTERDAY
+DURATION_DAYS = DAYS_SINCE_YDAY or 3 # Gets 3 days of previous data including YESTERDAY
 
 
 # Don't change this

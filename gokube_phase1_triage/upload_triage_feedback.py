@@ -26,7 +26,7 @@ BASE_TRIAGE_DIR = './triaged_datasets'
 # You need to specify the folder you want to upload back to S3 after manual triage
 # This should be a sub-folder under triaged-datasets in your directory
 # either modify it here or use the -ts or --triage-subfolder argument when running the script.
-NEW_TRIAGE_SUBDIR = '20190526-20190528' or TRIAGE_SUBFOLDER
+NEW_TRIAGE_SUBDIR = TRIAGE_SUBFOLDER or '20190526-20190528'
 
 # No need to change this
 TRIAGE_PATH = os.path.join(BASE_TRIAGE_DIR, NEW_TRIAGE_SUBDIR)
