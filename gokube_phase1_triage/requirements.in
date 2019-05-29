@@ -1,0 +1,10 @@
+boto3
+botocore
+keras==2.2.4
+tensorflow==1.12.0
+arrow
+pandas
+dill
+daiquiri
+numpy
+google-cloud-bigquery
