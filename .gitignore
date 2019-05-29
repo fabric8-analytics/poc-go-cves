@@ -108,3 +108,6 @@ venv.bak/
 
 # Triage
 triaged_datasets/
+
+# model assets
+model_assets/
