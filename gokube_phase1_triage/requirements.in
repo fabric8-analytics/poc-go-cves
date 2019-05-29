@@ -5,6 +5,9 @@ tensorflow==1.12.0
 arrow
 pandas
 dill
+contractions
 daiquiri
 numpy
 google-cloud-bigquery
+lxml
+beautifulsoup4
