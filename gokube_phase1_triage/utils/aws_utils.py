@@ -28,7 +28,7 @@ def s3_download_folder(s3_bucket_obj, bucket_dir_prefix='', download_path='./', 
 
     for obj in s3_bucket_obj.objects.filter(Prefix=bucket_dir_prefix):
         s3_object = obj.key
-        _logger.info('Downloading object: {obj}'.format(s3_object))
+        _logger.info('Downloading object: {obj}'.format(obj=s3_object))
         if not s3_object.endswith("/"):
             path, file = os.path.split(s3_object)
             if not os.path.exists(os.path.join(download_path, path)):
