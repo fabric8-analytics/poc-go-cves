@@ -3,6 +3,13 @@ from utils import cloud_constants as cc
 import os
 import daiquiri
 import logging
+import argparse
+
+parser = argparse.ArgumentParser()
+parser.add_argument("-ts", "--triage-subfolder", type=str,
+                    help="The specific triage sub-folder to upload to S3. Folder format is YYYYMMDD-YYYYMMDD.")
+args = parser.parse_args()
+TRIAGE_SUBFOLDER = args.triage_subfolder
 
 daiquiri.setup(level=logging.INFO)
 _logger = daiquiri.getLogger(__name__)
@@ -18,7 +25,8 @@ BASE_TRIAGE_DIR = './triaged_datasets'
 # CHANGE NEEDED
 # You need to specify the folder you want to upload back to S3 after manual triage
 # This should be a sub-folder under triaged-datasets in your directory
-NEW_TRIAGE_SUBDIR = '20190526-20190528'
+# either modify it here or use the -ts or --triage-subfolder argument when running the script.
+NEW_TRIAGE_SUBDIR = '20190526-20190528' or TRIAGE_SUBFOLDER
 
 # No need to change this
 TRIAGE_PATH = os.path.join(BASE_TRIAGE_DIR, NEW_TRIAGE_SUBDIR)
