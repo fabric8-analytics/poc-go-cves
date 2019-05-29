@@ -12,6 +12,14 @@ import daiquiri
 import logging
 import gc
 import os
+import argparse
+
+# Initial setup no need to change anything
+parser = argparse.ArgumentParser()
+parser.add_argument("-d", "--days-since-yday", type=int,
+                    help="The number of days worth of data to retrieve from GitHub including yesterday")
+args = parser.parse_args()
+DAYS_SINCE_YDAY = args.days_since_yday
 
 daiquiri.setup(level=logging.INFO)
 _logger = daiquiri.getLogger(__name__)
@@ -32,16 +40,21 @@ _logger.info('----- DATES SETUP FOR GETTING GITHUB BQ DATA -----')
 # Don't change this
 PRESENT_TIME = arrow.now()
 
+
 # CHANGE NEEDED
 # to get data for N days back starting from YESTERDAY
 # e.g if today is 20190528 and DURATION DAYS = 2 -> BQ will get data for 20190527, 20190526
 # We don't get data for PRESENT DAY since github data will be incomplete on the same day
 # But you can get it if you want but better not to for completeness :)
-DURATION_DAYS = 3  # Gets 2 days of previous data including YESTERDAY
+
+# You can set this directly from command line using the -d or --days-since-yday argument
+DURATION_DAYS = 3 or DAYS_SINCE_YDAY # Gets 3 days of previous data including YESTERDAY
+
 
 # Don't change this
 # Start time for getting data
 START_TIME = PRESENT_TIME.shift(days=-DURATION_DAYS)
+
 
 # Don't change this
 # End time for getting data (present_time - 1) i.e yesterday
